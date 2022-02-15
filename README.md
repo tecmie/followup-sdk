@@ -1,14 +1,8 @@
-<p align="center">
-  <a href="https://notifire.co">
-    <img width="200" src="https://notifire.co/img/logo.png">
-  </a>
-</p>
-
-<h1 align="center">Notifire Node SDK</h1>
+<h1 align="center">Followup Node SDK</h1>
 
 <div align="center">
 
-And SDK to interact with the Notifire API
+And SDK to interact with the Followup API
 
 </div>
 
@@ -21,21 +15,21 @@ And SDK to interact with the Notifire API
 ## 📦 Install
 
 ```bash
-npm install @notifire/node
+npm install @followup/node
 ```
 
 ```bash
-yarn add @notifire/node
+yarn add @followup/node
 ```
 
 ## 🔨 Usage
 
 ```ts
-import { Notifire } from '@notifire/node';
+import { Followup } from '@followup/node';
 
-const notifire = new Notifire(process.env.NOTIFIRE_API_KEY);
+const followup = new Followup(process.env.FOLLOWUP_API_KEY);
 
-await notifire.trigger('<REPLACE_WITH_EVENT_NAME>', {
+await followup.trigger('<REPLACE_WITH_EVENT_NAME>', {
   $user_id: "<USER IDENTIFIER>",
   $email: "<USER_EMAIL>",
   customAttribute: "", // use the custom attribute from each event here
@@ -46,8 +40,8 @@ await notifire.trigger('<REPLACE_WITH_EVENT_NAME>', {
 
 ### TypeScript
 
-`@notifire/node` is written in TypeScript with complete definitions.
+`@followup/node` is written in TypeScript with complete definitions.
 
 ## 🔗 Links
 
-- [Home page](https://notifire.co/)
+- [Home page](https://followup.so/)

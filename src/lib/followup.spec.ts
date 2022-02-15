@@ -10,9 +10,9 @@ test('should create a valid request with API Keys', async (t) => {
     success: true,
   });
 
-  const notifire = new Followup('TEST_KEY');
+  const followup = new Followup('TEST_KEY');
 
-  await notifire.trigger('test-event', {
+  await followup.trigger('test-event', {
     $user_id: 'Test',
   });
 
@@ -25,9 +25,9 @@ test('should pass the trigger contents successfully', async (t) => {
     success: true,
   });
 
-  const notifire = new Followup('TEST_KEY');
+  const followup = new Followup('TEST_KEY');
 
-  await notifire.trigger('test-event', {
+  await followup.trigger('test-event', {
     $user_id: '123',
     name: 'Test',
   });
@@ -54,9 +54,9 @@ test('should throw if no API key provided', async (t) => {
 test('should throw if no event name found', async (t) => {
   const error = await t.throwsAsync(
     async () => {
-      const notifire = new Followup('TEST_KEY');
+      const followup = new Followup('TEST_KEY');
       // @ts-ignore
-      return await notifire.trigger();
+      return await followup.trigger();
     },
     { instanceOf: Error }
   );
