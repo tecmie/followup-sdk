@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 
 import { ChannelTypeEnum } from './enums';
 
-export interface INotifireConfig {
+export interface IFollowupConfig {
   API_URL: string;
 }
 
@@ -15,10 +15,10 @@ export interface IEventPayload {
   [key: string]: any;
 }
 
-export class Notifire {
+export class Followup {
   private http: AxiosInstance;
 
-  constructor(private API_KEY: string, private options: INotifireConfig = { API_URL: 'https://api.notifire.co/v1'}) {
+  constructor(private API_KEY: string, private options: IFollowupConfig = { API_URL: 'https://api.followup.so/v1' }) {
     if (!API_KEY) {
       throw new Error('API_KEY must be provided during initialization');
     }

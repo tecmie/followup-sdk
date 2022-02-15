@@ -1,2 +1,2 @@
-export * from './lib/notifire';
+export * from './lib/followup';
 export * from './lib/enums';
