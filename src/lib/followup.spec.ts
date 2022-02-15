@@ -7,13 +7,13 @@ import { Followup } from './followup';
 test('should create a valid request with API Keys', async (t) => {
   const mock = new MockAdapter(axios);
   const adapter = mock.onPost(/\.*\/events\/trigger/).reply(200, {
-    success: true
-  })
+    success: true,
+  });
 
   const notifire = new Followup('TEST_KEY');
 
   await notifire.trigger('test-event', {
-    $user_id: 'Test'
+    $user_id: 'Test',
   });
 
   t.assert(adapter.history.post[0].headers.Authorization, 'ApiKey TEST_KEY');
@@ -22,14 +22,14 @@ test('should create a valid request with API Keys', async (t) => {
 test('should pass the trigger contents successfully', async (t) => {
   const mock = new MockAdapter(axios);
   const adapter = mock.onPost(/\.*\/events\/trigger/).reply(200, {
-    success: true
+    success: true,
   });
 
   const notifire = new Followup('TEST_KEY');
 
   await notifire.trigger('test-event', {
     $user_id: '123',
-    name: 'Test'
+    name: 'Test',
   });
 
   const body = JSON.parse(adapter.history.post[0].data);
@@ -40,21 +40,26 @@ test('should pass the trigger contents successfully', async (t) => {
 });
 
 test('should throw if no API key provided', async (t) => {
-  const error = t.throws(() => {
-    // @ts-ignore
-    new Followup();
-  }, { instanceOf: Error });
+  const error = t.throws(
+    () => {
+      // @ts-ignore
+      new Followup();
+    },
+    { instanceOf: Error }
+  );
 
   t.is(error.message, 'API_KEY must be provided during initialization');
 });
 
-
 test('should throw if no event name found', async (t) => {
-  const error = await t.throwsAsync(async () => {
-    const notifire = new Followup('TEST_KEY');
-    // @ts-ignore
-    return await notifire.trigger();
-  }, { instanceOf: Error });
+  const error = await t.throwsAsync(
+    async () => {
+      const notifire = new Followup('TEST_KEY');
+      // @ts-ignore
+      return await notifire.trigger();
+    },
+    { instanceOf: Error }
+  );
 
   t.is(error.message, 'eventName must be specified');
 });

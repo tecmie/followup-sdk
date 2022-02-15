@@ -12,13 +12,17 @@ export interface IEventPayload {
   $last_name?: string;
   $email?: string;
   $channels?: ChannelTypeEnum[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 
 export class Followup {
   private http: AxiosInstance;
 
-  constructor(private API_KEY: string, private options: IFollowupConfig = { API_URL: 'https://api.followup.so/v1' }) {
+  constructor(
+    private API_KEY: string,
+    private options: IFollowupConfig = { API_URL: 'https://api.followup.so/v1' }
+  ) {
     if (!API_KEY) {
       throw new Error('API_KEY must be provided during initialization');
     }
@@ -26,8 +30,8 @@ export class Followup {
     this.http = axios.create({
       baseURL: this.options.API_URL,
       headers: {
-        Authorization: `ApiKey ${this.API_KEY}`
-      }
+        Authorization: `ApiKey ${this.API_KEY}`,
+      },
     });
   }
 
@@ -39,8 +43,8 @@ export class Followup {
     return await this.http.post(`/events/trigger`, {
       name: eventName,
       payload: {
-        ...payload
-      }
-    })
+        ...payload,
+      },
+    });
   }
 }
