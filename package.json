@@ -7,7 +7,6 @@
   "module": "build/module/index.js",
   "repository": "https://github.com/notifirehq/node",
   "license": "MIT",
-  "private": false,
   "keywords": [],
   "scripts": {
     "build": "run-p build:*",
